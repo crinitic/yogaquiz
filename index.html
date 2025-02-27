@@ -90,9 +90,11 @@
 
             for (let i = 0; i < sanskrittList.length; i++) {
                 const li = document.createElement("li");
-                li.innerText = sanskrittList[i];
+                const span = document.createElement("span");
+                
+                span.innerText = sanskrittList[i];
 
-                li.onclick = function() {
+                span.onclick = function() {
                     if (this.innerText === DICTIONARY[0].sanskritt) {
                         alert("Correct!");
                         getNext(); // Load next question
@@ -107,6 +109,7 @@
                     }
                 };
 
+                li.appendChild(span);
                 $sanskrittList.appendChild(li);
             }
         }
@@ -124,6 +127,10 @@
 
         ul li {
             line-height: 2rem;
+        }
+
+        ul li span {
+            cursor: pointer;
         }
 
         #english {
