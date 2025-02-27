@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Quiz</title>
+    <script>
+        let DICTIONARY = [
+  { "sanskritt": "Balasana", "english": "Child's pose" },
+  { "sanskritt": "Bhujangasana", "english": "Cobra" },
+  { "sanskritt": "Tadasana", "english": "Mountain" },
+  { "sanskritt": "Adho Mukha Svanasana", "english": "Downward Facing Dog" },
+  { "sanskritt": "Uttanasana", "english": "Intense forward fold" },
+  { "sanskritt": "Chaturanga Dandasana", "english": "Four Bent Limbs Staff" },
+  { "sanskritt": "Urdhva Mukha Svanasana", "english": "Upward Facing Dog" },
+  { "sanskritt": "Virabhadrasana", "english": "Warrior" },
+  { "sanskritt": "Utthita Trikonasana", "english": "Triangle" },
+  { "sanskritt": "Utthita Parsvakonasana", "english": "Extended Side Angle" },
+  { "sanskritt": "Vrksasana", "english": "Tree" },
+  { "sanskritt": "Ardha Chandrasana", "english": "Half Moon" },
+  { "sanskritt": "Prasarita Padottanasana", "english": "Wide Leg Forward Fold" },
+  { "sanskritt": "Utthita Hasta Padangustasana", "english": "Extended hand to foot" },
+  { "sanskritt": "Utkatasana", "english": "Chair (fierce)" },
+  { "sanskritt": "Parsvottanasana", "english": "Pyramid pose" },
+  { "sanskritt": "Parivrtta Trikonasana", "english": "Revolved Triangle" },
+  { "sanskritt": "Parivrtta Parsvakonasana", "english": "Revolved Side Angle" },
+  { "sanskritt": "Navasana", "english": "Boat" },
+  { "sanskritt": "Vasisthasana", "english": "Side plank" },
+  { "sanskritt": "Bakasana", "english": "Crow" },
+  { "sanskritt": "Parsva Bakasana", "english": "Side crow" },
+  { "sanskritt": "Adho Mukha Vrksasana", "english": "Handstand (downward tree)" },
+  { "sanskritt": "Pincamayurasana", "english": "Forearm stand (pincha)" },
+  { "sanskritt": "Salamba Sarvangasana", "english": "Shoulderstand" },
+  { "sanskritt": "Dhanurasana", "english": "Bow" },
+  { "sanskritt": "Ustrasana", "english": "Camel" },
+  { "sanskritt": "Urdhva Dhanurasana", "english": "Upward Facing Bow/ Wheel" },
+  { "sanskritt": "Baddha Konasana", "english": "Bound Angle" },
+  { "sanskritt": "Marichyasana", "english": "Sage (seated twist)" },
+  { "sanskritt": "Janu Sirsasana", "english": "Head of the Knee (seated)" },
+  { "sanskritt": "Paschimottanasana", "english": "Western Stretch (seated fwd fold)" },
+  { "sanskritt": "Savasana", "english": "Corpse" },
+  { "sanskritt": "Utthita", "english": "Standing / extended / raised" },
+  { "sanskritt": "Supta", "english": "Lying" },
+  { "sanskritt": "Viparita", "english": "inverted" },
+  { "sanskritt": "Adho", "english": "Downward" },
+  { "sanskritt": "Urdhva", "english": "Upward" },
+  { "sanskritt": "Mukha", "english": "Face" },
+  { "sanskritt": "Parsva", "english": "side or plank" },
+  { "sanskritt": "Ardha", "english": "Half" },
+  { "sanskritt": "Baddha", "english": "Bound" },
+  { "sanskritt": "Parivrtta", "english": "Revolved / twisted" },
+  { "sanskritt": "Sukha", "english": "Easy" },
+  { "sanskritt": "Svana", "english": "Dog" },
+  { "sanskritt": "Pada", "english": "Foot" },
+  { "sanskritt": "Hasta", "english": "Hand" },
+  { "sanskritt": "Setu", "english": "Bridge" },
+  { "sanskritt": "Janu", "english": "Knee" },
+  { "sanskritt": "Padmasana", "english": "Lotus" },
+  { "sanskritt": "Gomukhasana", "english": "Cow Face / Face of light" },
+  { "sanskritt": "Kapotasana", "english": "Pigeon" },
+  { "sanskritt": "Matsyasana", "english": "Fish" },
+  { "sanskritt": "Phalahakasana", "english": "Plank" },
+  { "sanskritt": "Salamba Bhujangasana", "english": "Sphinx" },
+  { "sanskritt": "Upavistha", "english": "Wide Angle Forward bend (seated)" }
+]
+;
+
+        function shuffleDictionary() {
+            for (let i = DICTIONARY.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [DICTIONARY[i], DICTIONARY[j]] = [DICTIONARY[j], DICTIONARY[i]];
+            }
+        }
+
+        function getNext() {
+            shuffleDictionary();
+    
+            document.getElementById("sanskritt").innerText = DICTIONARY[0].english;
+
+            const $sanskrittList = document.getElementById("sanskritt_list");
+            $sanskrittList.innerHTML = ""; // Clear previous items
+            const sanskrittList = DICTIONARY.map(item => item.sanskritt).sort(() => Math.random() - 0.5);
+
+            for (let i = 0; i < sanskrittList.length; i++) {
+                const li = document.createElement("li");
+                li.innerText = sanskrittList[i];
+
+                li.onclick = function() {
+                    if (this.innerText === DICTIONARY[0].sanskritt) {
+                        alert("Correct!");
+                        getNext(); // Load next question
+                    } else {
+                        alert("Try again!");
+                    }
+                };
+
+                $sanskrittList.appendChild(li);
+            }
+        }
+    </script>
+    <style></style>
+</head>
+<body onload="getNext()">
+    <div id="sanskritt"></div>
+    <div id="sanskritt_container">
+        <ul id="sanskritt_list"></ul>
+    </div>
+</body>
+</html>
