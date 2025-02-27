@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yoga Quiz</title>
     <script>
-        let remainingAttempts = 2; // 
+        let remainingAttempts = 2; 
 
         let DICTIONARY = [
   { "sanskritt": "Balasana", "english": "Child's pose" },
@@ -77,7 +77,7 @@
         function getNext() {
             shuffleDictionary();
     
-            document.getElementById("sanskritt").innerText = DICTIONARY[0].english;
+            document.getElementById("english").innerText = DICTIONARY[0].english;
 
             const $sanskrittList = document.getElementById("sanskritt_list");
             $sanskrittList.innerHTML = ""; // Clear previous items
@@ -114,14 +114,17 @@
         }
 
         ul li {
-            display: inline;
-            margin-right: 1rem; /* Adjust as needed */
             line-height: 2rem;
+        }
+
+        #english {
+            font-weight: bold;
+            margin-bottom: 2rem;
         }
     </style>
 </head>
 <body onload="getNext()">
-    <div id="sanskritt"></div>
+    <div id="english"></div>
     <div id="sanskritt_container">
         <ul id="sanskritt_list"></ul>
     </div>
