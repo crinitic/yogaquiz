@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yoga Quiz</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     <script>
         let remainingAttempts = 2; 
 
@@ -78,6 +79,7 @@
         }
 
         function getNext() {
+            window.scrollTo(0, 0); // Scroll to top of the page
             shuffleDictionary();
     
             document.getElementById("english").innerText = DICTIONARY[0].english;
@@ -110,6 +112,10 @@
         }
     </script>
     <style>
+        body, input, button, select, textarea {
+           font-family:"Open Sans", Verdana, Arial, Helvetica, sans-serif;
+        }
+
         ul {
             list-style-type: none;
             padding: 0;
