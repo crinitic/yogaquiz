@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yoga Quiz</title>
     <script>
+        let remainingAttempts = 2;
+
         let DICTIONARY = [
   { "sanskritt": "Balasana", "english": "Child's pose" },
   { "sanskritt": "Bhujangasana", "english": "Cobra" },
@@ -90,7 +92,13 @@
                         alert("Correct!");
                         getNext(); // Load next question
                     } else {
-                        alert("Try again!");
+                        if (remainingAttempts-- > 1) {
+                            alert("Incorrect. Try again.");
+                        } else {
+                            alert("Incorrect. Correct was " + DICTIONARY[0].sanskritt);
+                            remainingAttempts = 2; // Reset attempts for the next question
+                            getNext(); // Load next question
+                        }
                     }
                 };
 
@@ -98,7 +106,19 @@
             }
         }
     </script>
-    <style></style>
+    <style>
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul li {
+            display: inline;
+            margin-right: 1rem; /* Adjust as needed */
+            line-height: 2rem;
+        }
+    </style>
 </head>
 <body onload="getNext()">
     <div id="sanskritt"></div>
