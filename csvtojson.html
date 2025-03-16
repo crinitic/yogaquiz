@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSV to JSON Converter</title>
+</head>
+<body>
+    <h1>CSV to JSON Converter</h1>
+
+    <!-- Button to select CSV file -->
+    <input type="file" id="csvFileInput" accept=".csv">
+    <button onclick="processCSV()">Convert to JSON</button>
+
+    <h2>Generated JSON</h2>
+    <pre id="jsonOutput"></pre>
+
+    <script>
+        // Function to process the CSV file
+        function processCSV() {
+            const fileInput = document.getElementById('csvFileInput');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                alert("Please select a CSV file.");
+                return;
+            }
+
+            const reader = new FileReader();
+            
+            reader.onload = function(event) {
+                const csvData = event.target.result;
+                const jsonData = csvToJson(csvData);
+                document.getElementById('jsonOutput').textContent = JSON.stringify(jsonData, null, 2);
+            };
+            
+            reader.onerror = function() {
+                alert("Error reading file.");
+            };
+            
+            reader.readAsText(file);
+        }
+
+        // Function to convert CSV to JSON
+        function csvToJson(csv) {
+            const lines = csv.split('\n');
+            const result = [];
+            
+            const headers = lines[0].split(','); // Assuming first row has column headers
+            for (let i = 1; i < lines.length; i++) {
+                const currentLine = lines[i].split(',');
+                if (currentLine.length === headers.length) {
+                    let obj = {};
+                    for (let j = 0; j < headers.length; j++) {
+                        obj[headers[j].trim()] = currentLine[j].trim();
+                    }
+                    result.push(obj);
+                }
+            }
+            return result;
+        }
+    </script>
+</body>
+</html>

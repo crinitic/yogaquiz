@@ -8,112 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yoga Quiz</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
-    <script>
-        let remainingAttempts = 2; 
-
-        let DICTIONARY = [
-  { "sanskritt": "Balasana", "english": "Child's pose" },
-  { "sanskritt": "Bhujangasana", "english": "Cobra" },
-  { "sanskritt": "Tadasana", "english": "Mountain" },
-  { "sanskritt": "Adho Mukha Svanasana", "english": "Downward Facing Dog" },
-  { "sanskritt": "Uttanasana", "english": "Intense forward fold" },
-  { "sanskritt": "Chaturanga Dandasana", "english": "Four Bent Limbs Staff" },
-  { "sanskritt": "Urdhva Mukha Svanasana", "english": "Upward Facing Dog" },
-  { "sanskritt": "Virabhadrasana", "english": "Warrior" },
-  { "sanskritt": "Utthita Trikonasana", "english": "Triangle" },
-  { "sanskritt": "Utthita Parsvakonasana", "english": "Extended Side Angle" },
-  { "sanskritt": "Vrksasana", "english": "Tree" },
-  { "sanskritt": "Ardha Chandrasana", "english": "Half Moon" },
-  { "sanskritt": "Prasarita Padottanasana", "english": "Wide Leg Forward Fold" },
-  { "sanskritt": "Utthita Hasta Padangustasana", "english": "Extended hand to foot" },
-  { "sanskritt": "Utkatasana", "english": "Chair (fierce)" },
-  { "sanskritt": "Parsvottanasana", "english": "Pyramid pose" },
-  { "sanskritt": "Parivrtta Trikonasana", "english": "Revolved Triangle" },
-  { "sanskritt": "Parivrtta Parsvakonasana", "english": "Revolved Side Angle" },
-  { "sanskritt": "Navasana", "english": "Boat" },
-  { "sanskritt": "Vasisthasana", "english": "Side plank" },
-  { "sanskritt": "Bakasana", "english": "Crow" },
-  { "sanskritt": "Parsva Bakasana", "english": "Side crow" },
-  { "sanskritt": "Adho Mukha Vrksasana", "english": "Handstand (downward tree)" },
-  { "sanskritt": "Pincamayurasana", "english": "Forearm stand (pincha)" },
-  { "sanskritt": "Salamba Sarvangasana", "english": "Shoulderstand" },
-  { "sanskritt": "Dhanurasana", "english": "Bow" },
-  { "sanskritt": "Ustrasana", "english": "Camel" },
-  { "sanskritt": "Urdhva Dhanurasana", "english": "Upward Facing Bow/ Wheel" },
-  { "sanskritt": "Baddha Konasana", "english": "Bound Angle" },
-  { "sanskritt": "Marichyasana", "english": "Sage (seated twist)" },
-  { "sanskritt": "Janu Sirsasana", "english": "Head of the Knee (seated)" },
-  { "sanskritt": "Paschimottanasana", "english": "Western Stretch (seated fwd fold)" },
-  { "sanskritt": "Savasana", "english": "Corpse" },
-  { "sanskritt": "Utthita", "english": "Standing / extended / raised" },
-  { "sanskritt": "Supta", "english": "Lying" },
-  { "sanskritt": "Viparita", "english": "inverted" },
-  { "sanskritt": "Adho", "english": "Downward" },
-  { "sanskritt": "Urdhva", "english": "Upward" },
-  { "sanskritt": "Mukha", "english": "Face" },
-  { "sanskritt": "Parsva", "english": "side or plank" },
-  { "sanskritt": "Ardha", "english": "Half" },
-  { "sanskritt": "Baddha", "english": "Bound" },
-  { "sanskritt": "Parivrtta", "english": "Revolved / twisted" },
-  { "sanskritt": "Sukha", "english": "Easy" },
-  { "sanskritt": "Svana", "english": "Dog" },
-  { "sanskritt": "Pada", "english": "Foot" },
-  { "sanskritt": "Hasta", "english": "Hand" },
-  { "sanskritt": "Setu", "english": "Bridge" },
-  { "sanskritt": "Janu", "english": "Knee" },
-  { "sanskritt": "Padmasana", "english": "Lotus" },
-  { "sanskritt": "Gomukhasana", "english": "Cow Face / Face of light" },
-  { "sanskritt": "Kapotasana", "english": "Pigeon" },
-  { "sanskritt": "Matsyasana", "english": "Fish" },
-  { "sanskritt": "Phalahakasana", "english": "Plank" },
-  { "sanskritt": "Salamba Bhujangasana", "english": "Sphinx" },
-  { "sanskritt": "Upavistha", "english": "Wide Angle Forward bend (seated)" }
-]
-;
-
-        function shuffleDictionary() {
-            for (let i = DICTIONARY.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [DICTIONARY[i], DICTIONARY[j]] = [DICTIONARY[j], DICTIONARY[i]];
-            }
-        }
-
-        function getNext() {
-            window.scrollTo(0, 0); // Scroll to top of the page
-            shuffleDictionary();
     
-            document.getElementById("english").innerText = DICTIONARY[0].english;
-
-            const $sanskrittList = document.getElementById("sanskritt_list");
-            $sanskrittList.innerHTML = ""; // Clear previous items
-            const sanskrittList = DICTIONARY.map(item => item.sanskritt).sort(() => Math.random() - 0.5);
-
-            for (let i = 0; i < sanskrittList.length; i++) {
-                const li = document.createElement("li");
-                const span = document.createElement("span");
-                
-                span.innerText = sanskrittList[i];
-
-                span.onclick = function() {
-                    if (this.innerText === DICTIONARY[0].sanskritt) {
-                        alert("Correct!");
-                        getNext(); // Load next question
-                    } else {
-                        if (remainingAttempts-- > 1) {
-                            alert("Incorrect. Try again.");
-                        } else {
-                            alert("Incorrect. Correct was " + DICTIONARY[0].sanskritt);
-                            remainingAttempts = 2; // Reset attempts for the next question
-                            getNext(); // Load next question
-                        }
-                    }
-                };
-
-                li.appendChild(span);
-                $sanskrittList.appendChild(li);
-            }
-        }
-    </script>
     <style>
         body, input, button, select, textarea {
            font-family:"Open Sans", Verdana, Arial, Helvetica, sans-serif;
@@ -135,14 +30,676 @@
 
         #english {
             font-weight: bold;
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        #quiz_type {
+            margin-bottom: 1rem;
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
         }
     </style>
 </head>
-<body onload="getNext()">
+<body>
+    <canvas id="fireworksCanvas"></canvas>
+    <div id="quiz_type">
+        <select onchange="dictionaryChanged()">
+            <option disabled selected>Choose type</option>
+            <option value="poses">Poses</option>
+            <option value="bodyparts">Body Parts</option>
+            <option value="philosophy">Philosophy</option>
+        </select>
+    </div>
     <div id="english"></div>
     <div id="sanskritt_container">
         <ul id="sanskritt_list"></ul>
     </div>
+
+
+    <script>
+        const canvas = document.getElementById("fireworksCanvas");
+        const ctx = canvas.getContext("2d");
+
+        let fireworksInterval = null;
+
+        // Resize canvas to fill screen
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        // Firework class
+        class Firework {
+            constructor(x, y, color) {
+                this.x = x;
+                this.y = y;
+                this.color = color;
+                this.particles = [];
+                this.exploded = false;
+                this.angle = Math.random() * Math.PI * 2;
+                this.speed = 3 + Math.random() * 3;
+                this.radius = 2;
+            }
+
+            explode() {
+                if (this.exploded) return;
+                for (let i = 0; i < 100; i++) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = Math.random() * 3 + 1;
+                    this.particles.push(new Particle(this.x, this.y, angle, speed, this.color));
+                }
+                this.exploded = true;
+            }
+
+            update() {
+                if (!this.exploded) {
+                    // Move upwards before exploding
+                    this.x += Math.cos(this.angle) * this.speed;
+                    this.y += Math.sin(this.angle) * this.speed;
+                }
+                this.particles.forEach(p => p.update());
+            }
+
+            draw() {
+                if (!this.exploded) {
+                    // Draw firework before explosion
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+                this.particles.forEach(p => p.draw());
+            }
+        }
+
+        // Particle class for the explosion
+        class Particle {
+            constructor(x, y, angle, speed, color) {
+                this.x = x;
+                this.y = y;
+                this.angle = angle;
+                this.speed = speed;
+                this.color = color;
+                this.life = 100;
+                this.size = 3 + Math.random() * 2;
+            }
+
+            update() {
+                this.x += Math.cos(this.angle) * this.speed;
+                this.y += Math.sin(this.angle) * this.speed;
+                this.life -= 1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+        }
+
+        // Create a random firework
+        function createFirework() {
+            const x = Math.random() * canvas.width;
+            const y = Math.random() * canvas.height / 2;
+            const color = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            const firework = new Firework(x, y, color);
+            fireworks.push(firework);
+        }
+
+        let fireworks = [];
+        let animationFrameId;
+
+        // Main animation loop
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            fireworks.forEach(firework => {
+                firework.update();
+                firework.draw();
+                if (!firework.exploded && Math.random() < 0.03) firework.explode();
+            });
+
+            animationFrameId = requestAnimationFrame(animate);
+        }
+
+        // Initialize fireworks and resize canvas on window resize
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // Start fireworks when called
+        function startFireworks() {
+            document.getElementById("fireworksCanvas").style.display = "block";
+            fireworksInterval = setInterval(createFirework, 100); // Create new fireworks every 100ms
+            animate(); // Start the animation
+
+            setTimeout(() => {
+                clearInterval(fireworksInterval);
+                document.getElementById("fireworksCanvas").style.display = "none";
+                cancelAnimationFrame(animationFrameId);
+                fireworks = [];
+            }, 2000); // Stop after 2 seconds
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        let remainingAttempts = 2; 
+
+        const DICTIONARIES = {
+            "poses":[
+                {
+                    "sanskritt": "Balasana",
+                    "english": "Chil's pose"
+                },
+                {
+                    "sanskritt": "Bhujangasana",
+                    "english": "Cobra"
+                },
+                {
+                    "sanskritt": "Tadasana",
+                    "english": "Moutain"
+                },
+                {
+                    "sanskritt": "Adho Mukha Svanasana",
+                    "english": "Downward Facing Dog"
+                },
+                {
+                    "sanskritt": "Uttanasana",
+                    "english": "Intense forward fold"
+                },
+                {
+                    "sanskritt": "Chaturanga Dandasana",
+                    "english": "Four Bent Limbs Staff"
+                },
+                {
+                    "sanskritt": "Urdhva Mukha Svanasana",
+                    "english": "Upward Facing Dog"
+                },
+                {
+                    "sanskritt": "Virabhadrasana",
+                    "english": "Warrior"
+                },
+                {
+                    "sanskritt": "Utthita Trikonasana",
+                    "english": "Triangle"
+                },
+                {
+                    "sanskritt": "Utthita Parsvakonasana",
+                    "english": "Extended Side Angle"
+                },
+                {
+                    "sanskritt": "Vrksasana",
+                    "english": "Tree"
+                },
+                {
+                    "sanskritt": "Ardha Chandrasana",
+                    "english": "Half Moon"
+                },
+                {
+                    "sanskritt": "Prasarita Padottanasana",
+                    "english": "Wide Leg Forward Fold"
+                },
+                {
+                    "sanskritt": "Utthita Hasta Padangustasana",
+                    "english": "Extended hand to foot (standing)"
+                },
+                {
+                    "sanskritt": "Utkatasana",
+                    "english": "Chair (fierce)"
+                },
+                {
+                    "sanskritt": "Parsvottanasana",
+                    "english": "Pyramid pose"
+                },
+                {
+                    "sanskritt": "Parivrrta Trikonasana",
+                    "english": "Revolved Triangle"
+                },
+                {
+                    "sanskritt": "Parivrrta Parsvakonasana",
+                    "english": "Revolved Side Angle"
+                },
+                {
+                    "sanskritt": "Navasana",
+                    "english": "Boat"
+                },
+                {
+                    "sanskritt": "Vasisthasana",
+                    "english": "Side plank"
+                },
+                {
+                    "sanskritt": "Bakasana",
+                    "english": "Crow"
+                },
+                {
+                    "sanskritt": "Parsva Bakasana",
+                    "english": "Side crow"
+                },
+                {
+                    "sanskritt": "Adho Mukha Vrksasana",
+                    "english": "Handstand (downward tree)"
+                },
+                {
+                    "sanskritt": "Pincamayurasana",
+                    "english": "Forearm stand (pincha or peacock)"
+                },
+                {
+                    "sanskritt": "Salamba Sarvangasana",
+                    "english": "Shoulderstand"
+                },
+                {
+                    "sanskritt": "Dhanurasana",
+                    "english": "Bow"
+                },
+                {
+                    "sanskritt": "Ustrasana",
+                    "english": "Camel"
+                },
+                {
+                    "sanskritt": "Urdhva Dhanurasana",
+                    "english": "Upward Facing Bow/ Wheel"
+                },
+                {
+                    "sanskritt": "Baddha Konasana",
+                    "english": "Bound Angle (folded butterlfy)"
+                },
+                {
+                    "sanskritt": "Marichyasana I II III",
+                    "english": "Sage (seated twist)"
+                },
+                {
+                    "sanskritt": "Janu Sirsasana",
+                    "english": "Head of the Knee (seated)"
+                },
+                {
+                    "sanskritt": "Paschimottanasana",
+                    "english": "Western Stretch (seated fwd fold)"
+                },
+                {
+                    "sanskritt": "Savasana",
+                    "english": "Corpse"
+                },
+                {
+                    "sanskritt": "Parsva",
+                    "english": "Side"
+                },
+                {
+                    "sanskritt": "Gomukhasana",
+                    "english": "Cow Face / Face of light"
+                },
+                {
+                    "sanskritt": "Kapotasana",
+                    "english": "Pigeon"
+                },
+                {
+                    "sanskritt": "Matsyasana",
+                    "english": "Fish"
+                },
+                {
+                    "sanskritt": "Phalahakasana",
+                    "english": "Plank"
+                },
+                {
+                    "sanskritt": "Salamba Bhujangasana",
+                    "english": "Sphinx"
+                },
+                {
+                    "sanskritt": "Upavistha",
+                    "english": "Wide Angle Forward bend (seated)"
+                },
+                {
+                    "sanskritt": "Garudasana",
+                    "english": "Eagle"
+                },
+                {
+                    "sanskritt": "Halasana",
+                    "english": "Plow"
+                },
+                {
+                    "sanskritt": "Sirsasana",
+                    "english": "Headstand"
+                },
+                {
+                    "sanskritt": "Sirsa",
+                    "english": "Head"
+                },
+                {
+                    "sanskritt": "Salabasana",
+                    "english": "Locust"
+                },
+                {
+                    "sanskritt": "Marichyasana I",
+                    "english": "Sage (seated - 1 leg bent - fwd bend - bind)"
+                },
+                {
+                    "sanskritt": "Marichyasana II",
+                    "english": "Sage (seated half lotus - fwd bend - bind)"
+                },
+                {
+                    "sanskritt": "Marichyasana III",
+                    "english": "Sage (seated twist revolved - w/o bind)"
+                }],
+            "bodyparts":[
+                {
+                    "sanskritt": "Utthita",
+                    "english": "Standing / extended / raised"
+                },
+                {
+                    "sanskritt": "Supta",
+                    "english": "Lying"
+                },
+                {
+                    "sanskritt": "Viparita",
+                    "english": "Inverted"
+                },
+                {
+                    "sanskritt": "Adho",
+                    "english": "Downward"
+                },
+                {
+                    "sanskritt": "Urdhva",
+                    "english": "Upward"
+                },
+                {
+                    "sanskritt": "Mukha",
+                    "english": "Face"
+                },
+                {
+                    "sanskritt": "Ardha",
+                    "english": "Half"
+                },
+                {
+                    "sanskritt": "Baddha",
+                    "english": "Bound"
+                },
+                {
+                    "sanskritt": "Parivrtta",
+                    "english": "Revolved / twisted"
+                },
+                {
+                    "sanskritt": "Sukha",
+                    "english": "Easy"
+                },
+                {
+                    "sanskritt": "Svana",
+                    "english": "Dog"
+                },
+                {
+                    "sanskritt": "Pada",
+                    "english": "Foot"
+                },
+                {
+                    "sanskritt": "Hasta",
+                    "english": "Hand"
+                },
+                {
+                    "sanskritt": "Setu",
+                    "english": "Bridge"
+                },
+                {
+                    "sanskritt": "Janu",
+                    "english": "Knee"
+                },
+                {
+                    "sanskritt": "Padmasana",
+                    "english": "Lotus"
+                },
+                {
+                    "sanskritt": "Padangusta",
+                    "english": "Big Toe"
+                },
+                {
+                    "sanskritt": "Ut",
+                    "english": "Intense"
+                },
+                {
+                    "sanskritt": "Tan",
+                    "english": "Stretch"
+                },
+                {
+                    "sanskritt": "Kona",
+                    "english": "Angle"
+                },
+                {
+                    "sanskritt": "Prasarita",
+                    "english": "Expanded"
+                },
+                {
+                    "sanskritt": "Bhadra",
+                    "english": "Friend"
+                },
+                {
+                    "sanskritt": "Vira",
+                    "english": "Hero"
+                },
+                {
+                    "sanskritt": "Utkata",
+                    "english": "Powerful"
+                }
+            ],
+            "philosophy":[
+                {
+                    "sanskritt": "Muladhara (Red - Lam)",
+                    "english": "Root chakra (1)"
+                },
+                {
+                    "sanskritt": "Svadhisthana (Orange - Vam)",
+                    "english": "Sacral chakra (2)"
+                },
+                {
+                    "sanskritt": "Manipura (Yellow - Ram)",
+                    "english": "Sola plexus chakra (3)"
+                },
+                {
+                    "sanskritt": "Anahata (Green - Yam)",
+                    "english": "Heart chakra (4)"
+                },
+                {
+                    "sanskritt": "Vishuddi (Teal Blue - Ham)",
+                    "english": "Throat chakra (5)"
+                },
+                {
+                    "sanskritt": "Anja (Indigo - Aum/Om)",
+                    "english": "Third eye chakra (6)"
+                },
+                {
+                    "sanskritt": "Sahaswara (purple/all colors - silence)",
+                    "english": "Crown chakra (7)"
+                },
+                {
+                    "sanskritt": "Sattva (before sunrise)",
+                    "english": "Guna - mood of clarity"
+                },
+                {
+                    "sanskritt": "Tamas (middle of night)",
+                    "english": "Guna - mood of lethargy"
+                },
+                {
+                    "sanskritt": "Ragas (fire - get up an go)",
+                    "english": "Guna - mood of passion"
+                },
+                {
+                    "sanskritt": "Chit",
+                    "english": "Soul is full of knowledge"
+                },
+                {
+                    "sanskritt": "Ananda",
+                    "english": "Soul is blissful"
+                },
+                {
+                    "sanskritt": "Sat ('sut')",
+                    "english": "Soul is eternal"
+                },
+                {
+                    "sanskritt": "Manas (Manos)",
+                    "english": "Mind - lower instincts"
+                },
+                {
+                    "sanskritt": "Ahankara (seat of our identity)",
+                    "english": "Mind - false ego"
+                },
+                {
+                    "sanskritt": "Buddhi (discerning)",
+                    "english": "Mind - intelligence"
+                },
+                {
+                    "sanskritt": "Time",
+                    "english": "Unstoppable - unstorable - force of destruction - can't get it back - does not affect the soul"
+                },
+                {
+                    "sanskritt": "Drasthuh  - Atman - Purusha - Jiva",
+                    "english": "Soul - spirit"
+                },
+                {
+                    "sanskritt": "Purusa",
+                    "english": "Pure awareness (the seer)"
+                },
+                {
+                    "sanskritt": "Prakriti",
+                    "english": "matter (made up of the 3 gunas)"
+                },
+                {
+                    "sanskritt": "Gunas",
+                    "english": "Ropes that bind us to the material world"
+                },
+                {
+                    "sanskritt": "Citta (has 3 parts)",
+                    "english": "The mind"
+                },
+                {
+                    "sanskritt": "Mantra",
+                    "english": "To go beyond the mind"
+                },
+                {
+                    "sanskritt": "Vidya",
+                    "english": "Knowledge"
+                },
+                {
+                    "sanskritt": "Avidya",
+                    "english": "Ignorance"
+                },
+                {
+                    "sanskritt": "Vritti",
+                    "english": "Turnings of the mind"
+                },
+                {
+                    "sanskritt": "Klesha",
+                    "english": "Afflictions"
+                },
+                {
+                    "sanskritt": "Klista Vritti",
+                    "english": "Unvaforable thoughts"
+                },
+                {
+                    "sanskritt": "Karma Yoga",
+                    "english": "Do things because they're right"
+                },
+                {
+                    "sanskritt": "Vikarma",
+                    "english": "Don't care about people"
+                },
+                {
+                    "sanskritt": "Karma Kunda",
+                    "english": "Do things to receive back"
+                },
+                {
+                    "sanskritt": "Jnana Yoga",
+                    "english": "Path - Smash the mind"
+                },
+                {
+                    "sanskritt": "Karma Yoga",
+                    "english": "Path - Repurpose the mind"
+                },
+                {
+                    "sanskritt": "Ashtanga Yoga",
+                    "english": "Path - Control the mind"
+                },
+                {
+                    "sanskritt": "Bakthi",
+                    "english": "Path - Absorb the mind"
+                }
+
+            ]
+        };
+
+        let currentDictionary = []
+;
+
+        function shuffleDictionary() {
+            for (let i = currentDictionary.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [currentDictionary[i], currentDictionary[j]] = [currentDictionary[j], currentDictionary[i]];
+            }
+        }
+
+        function getNext() {
+            remainingAttempts = 2; 
+            window.scrollTo(0, 0); // Scroll to top of the page
+            shuffleDictionary();
+    
+            document.getElementById("english").innerText = currentDictionary[0].english;
+
+            const $sanskrittList = document.getElementById("sanskritt_list");
+            $sanskrittList.innerHTML = ""; // Clear previous items
+            const sanskrittList = currentDictionary.map(item => item.sanskritt).sort(() => Math.random() - 0.5);
+
+            for (let i = 0; i < sanskrittList.length; i++) {
+                const li = document.createElement("li");
+                const span = document.createElement("span");
+                
+                span.innerText = sanskrittList[i];
+
+                span.onclick = function() {
+                    if (this.innerText === currentDictionary[0].sanskritt) {
+                        startFireworks(); // Start the fireworks animation
+                        //alert("Correct!");
+                        getNext(); // Load next question
+                    } else {
+                        if (remainingAttempts-- > 1) {
+                            alert("Incorrect. Try again.");
+                        } else {
+                            alert("Incorrect. Correct was " + currentDictionary[0].sanskritt);
+                            getNext(); // Load next question
+                        }
+                    }
+                };
+
+                li.appendChild(span);
+                $sanskrittList.appendChild(li);
+            }
+        }
+
+        function dictionaryChanged() {
+            const selectedValue = document.querySelector("select").value;
+            currentDictionary = DICTIONARIES[selectedValue];
+            getNext();
+        }
+    </script>
+
+
 </body>
 </html>
